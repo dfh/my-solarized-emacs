@@ -62,22 +62,18 @@
 ;;   base02  bg-2  Background highlights
 ;;   base03  bg-3  Background
 ;;
-;; Some rules about how to use the accents:
-;;
-;; TODO
-;;
 
 ;;
-;; Development notes:
+;; To do:
 ;;
-;; TODO Add completion mode.
-;; TODO Put on GitHub.
 ;; TODO Make a README.org.
 ;; TODO Comment functions.
+;; TODO Add completion mode colors.
 ;; TODO Add Org-mode colors from sellout (maybe).
 ;; TODO Add info colors from bbatsov.
 ;; TODO Add markdown-mode colors from bbatsov.
 ;; TODO Add web-mode colors from bbatsov.
+;; TODO Add note about how to choose accent colors to README.
 ;;
 
 (deftheme my-solarized "Mix of sellout's, bbatsov's and
