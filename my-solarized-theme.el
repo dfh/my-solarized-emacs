@@ -1,6 +1,8 @@
 ;;
 ;; My version of the Solarized color theme for Emacs.
 ;;
+;; Excessively commented because I'm trying to learn Emacs Lisp.
+;;
 
 (deftheme my-solarized "Mix of sellout's, bbatsov's and
 wasamasa's fork of bbatsov's Solarized theme.")
@@ -16,6 +18,8 @@ wasamasa's fork of bbatsov's Solarized theme.")
   "t for dark, nil for light.")
 
 (defun my-solarized-color (color)
+  "Maps Solarized color name to hex color. Base colors are adjusted
+for light/dark depending on the value of `my-solarized-dark'."
   (cond
    ((eq color 'bg-3) (if my-solarized-dark? "#002b36" "#fdf6e3"))
    ((eq color 'bg-2) (if my-solarized-dark? "#073642" "#eee8d5"))
@@ -44,36 +48,33 @@ See `my-transform-face' for the transformation, see
          (mapcar #'my-transform-face faces)))
 
 (defun my-transform-face (face)
-  "Helper function that transforms a FACE to all variants.
-FACE is a list where the first element is the name of the
-affected face and the remaining elements specify the face
-attributes which are transformed into face attributes for both
-graphical and terminal displays. See `my-transform-spec' for the
+  "Helper function that transforms a FACE. FACE is a list where the
+first element is the name of the affected face and the remaining
+elements specify the face attributes which are transformed into face
+attributes for graphical displays. See `my-transform-spec' for the
 rules that are applied to the face attributes."
-  (let* ((name (car face))
-         (spec (cdr face))
-	 (graphic-spec (my-transform-spec spec))
-	 )
+  (let* ((name (car face)) ; car = first
+         (spec (cdr face)) ; cdr = rest
+	 (graphic-spec (my-transform-spec spec)))
     `(,name ((((type graphic)) ,@graphic-spec)))))
 
 (defun my-transform-spec (spec)
-  "Helper function that transforms SPEC. SPEC is a property list
-where the values are substituted with colors from
-`my-solarized-colors' for keys which are either :foreground
-or :background. All other key-value combinations remain
-unchanged."
+  "Helper function that transforms SPEC. SPEC is a property list where
+the values are substituted with colors from `my-solarized-colors' for
+keys which are either :foreground or :background. All other key-value
+combinations remain unchanged."
   (let (output)
     (while spec
       (let* ((key (car spec))
-             (value (cadr spec))
+             (value (cadr spec)) ; cadr = car of the cdr = first of the rest
              (color (my-solarized-color value)))
         (cond
          ((memq key '(:foreground :background :overline :color))
           (setq output (append output (list key color))))
-	 ((and (memq key '(:box :underline)) (listp value))
+	 ((and (memq key '(:box :underline)) (listp value)) ; recurse if nested
 	  (setq output (append output (list key (my-transform-spec value)))))
          (t (setq output (append output (list key value))))))
-      (setq spec (cddr spec)))
+      (setq spec (cddr spec))) ; cdr of the cdr = rest of the rest
     output))
 
 ;;
@@ -91,6 +92,10 @@ unchanged."
 ;; Accent colors are mapped to corresponding symbols.
 ;;
 ;; After changing, `M-x eval buffer` to apply changes.
+;;
+;; Rules:
+;;
+;; - Links are violet.
 ;;
 (my-apply-faces
  '(
@@ -192,20 +197,20 @@ unchanged."
    (font-lock-string-face :foreground cyan) ; Constant
    (font-lock-type-face :foreground yellow)
    (font-lock-variable-name-face :foreground blue) ; Identifier
-   (font-lock-warning-face :weight bold :foreground red) ; Error
+   (font-lock-warning-face :foreground red)
    (font-lock-doc-face :slant italic :foreground bg-1) ; Comment
-   (font-lock-doc-string-face :slant italic :foreground bg-1) ; Comment (XEmacs)
-   (font-lock-color-constant-face :foreground green)
-   (font-lock-comment-delimiter-face italic :foreground bg-1) ; Comment
+   (font-lock-comment-delimiter-face :slant italic :foreground bg-1) ; Comment
    (font-lock-preprocessor-face :foreground orange) ; PreProc
-   (font-lock-reference-face :foreground cyan)
    (font-lock-negation-char-face :foreground red)
-   (font-lock-other-type-face :slant italic :foreground blue)
    (font-lock-regexp-grouping-construct :foreground orange)
-   (font-lock-special-keyword-face :foreground red) ; Special
-   (font-lock-exit-face :foreground red)
-   (font-lock-other-emphasized-face :weight bold :slant italic :foreground violet)
    (font-lock-regexp-grouping-backslash :foreground yellow)
+
+   (font-lock-other-emphasized-face :weight bold :slant italic :foreground violet)
+   (font-lock-color-constant-face :foreground green)
+   (font-lock-special-keyword-face :foreground red) ; Special
+   (font-lock-other-type-face :slant italic :foreground blue)
+   (font-lock-exit-face :foreground red)
+   (font-lock-reference-face :foreground cyan)
    
    ;; ;; flx
    ;; (flx-highlight-face :foreground blue :weight normal :underline nil)
@@ -232,21 +237,21 @@ unchanged."
    (linum :foreground bg-1 :background bg-2)
    
    ;; magit
-   (magit-section-title :foreground yellow :weight bold)
-   (magit-branch :foreground orange :weight bold)
-   (magit-diff-add :background unspecified :foreground green)
-   (magit-diff-del :background unspecified :foreground red)
-   (magit-item-highlight :background bg-2 :weight unspecified)
-   (magit-log-author :foreground cyan)
-   (magit-log-graph :foreground bg-1)
-					;   (magit-log-head-label-bisect-bad :background red-l :foreground red-d :box (:line-width -1))
-					;   (magit-log-head-label-bisect-good :background green-l :foreground green-d :box (:line-width -1))
-   (magit-log-head-label-default :background bg-2 :box (:line-width -1))
-					;   (magit-log-head-label-local :background blue-d :foreground blue-l :box (:line-width -1))
-					;   (magit-log-head-label-patches :background red-d :foreground red-l :box (:line-width -1))
-					;   (magit-log-head-label-remote :background green-d :foreground green-l :box (:line-width -1))
-					;   (magit-log-head-label-tags :background yellow-d :foreground yellow-l :box (:line-width -1))
-   (magit-log-sha1 :foreground yellow)
+   ;; (magit-section-title :foreground yellow :weight bold)
+   ;; (magit-branch :foreground orange :weight bold)
+   ;; (magit-diff-add :background unspecified :foreground green)
+   ;; (magit-diff-del :background unspecified :foreground red)
+   ;; (magit-item-highlight :background bg-2 :weight unspecified)
+   ;; (magit-log-author :foreground cyan)
+   ;; (magit-log-graph :foreground bg-1)
+   ;; 					;   (magit-log-head-label-bisect-bad :background red-l :foreground red-d :box (:line-width -1))
+   ;; 					;   (magit-log-head-label-bisect-good :background green-l :foreground green-d :box (:line-width -1))
+   ;; (magit-log-head-label-default :background bg-2 :box (:line-width -1))
+   ;; 					;   (magit-log-head-label-local :background blue-d :foreground blue-l :box (:line-width -1))
+   ;; 					;   (magit-log-head-label-patches :background red-d :foreground red-l :box (:line-width -1))
+   ;; 					;   (magit-log-head-label-remote :background green-d :foreground green-l :box (:line-width -1))
+   ;; 					;   (magit-log-head-label-tags :background yellow-d :foreground yellow-l :box (:line-width -1))
+   ;; (magit-log-sha1 :foreground yellow)
 
    ;; markdown-mode
    (markdown-blockquote-face :inherit font-lock-doc-face)
