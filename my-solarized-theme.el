@@ -249,14 +249,30 @@ unchanged."
    (magit-log-sha1 :foreground yellow)
 
    ;; markdown-mode
-   (markdown-header-face :foreground green)
-   (markdown-header-face-1 :inherit markdown-header-face)
-   (markdown-header-face-2 :inherit markdown-header-face)
-   (markdown-header-face-3 :inherit markdown-header-face)
-   (markdown-header-face-4 :inherit markdown-header-face)
-   (markdown-header-face-5 :inherit markdown-header-face)
-   (markdown-header-face-6 :inherit markdown-header-face)
-
+   (markdown-blockquote-face :inherit font-lock-doc-face)
+   (markdown-bold-face :inherit bold)
+   (markdown-comment-face :inherit font-lock-comment-face)
+   (markdown-footnote-face :inherit shadow)
+   (markdown-header-delimiter-face :inherit shadow)
+   (markdown-header-face :inherit outline-1)
+   (markdown-header-face-1 :inherit outline-1)
+   (markdown-header-face-2 :inherit outline-2)
+   (markdown-header-face-3 :inherit outline-3)
+   (markdown-header-face-4 :inherit outline-4)
+   (markdown-header-face-5 :inherit outline-5)
+   (markdown-header-face-6 :inherit outline-6)
+   (markdown-header-rule-face :inherit shadow)
+   (markdown-inline-code-face :foreground bg-1)
+   (markdown-italic-face :inherit italic)
+   (markdown-list-face :foreground bg-1)
+   (markdown-link-face :inherit shadow)
+   (markdown-link-title-face :inherit shadow)
+   (markdown-missing-link-face :inherit font-lock-warning-face)
+   (markdown-pre-face :foreground bg-1)
+   (markdown-reference-face :inherit shadow)
+   (markdown-url-face :inherit shadow)
+   (markdown-language-keyword-face :inherit font-lock-keyword-face)
+   
    ;; org-mode
    (org-block-background :background bg-2)
    (org-hide :foreground bg-3)
@@ -317,14 +333,14 @@ unchanged."
    (org-latex-and-related:foreground orange)
 
    ;; outline
-   (outline-1 :foreground blue)
+   (outline-1 :foreground yellow)
    (outline-2 :foreground cyan)
-   (outline-3 :foreground yellow)
-   (outline-4 :foreground red)
+   (outline-3 :foreground blue)
+   (outline-4 :foreground violet)
    (outline-5 :foreground fg-0)
    (outline-6 :foreground bg-1)
-   (outline-7 :foreground orange)
-   (outline-8 :foreground violet)
+   (outline-7 :foreground bg-1)
+   (outline-8 :foreground bg-1)
 
    ;; sh-mode
    (sh-quoted-exec :foreground violet :weight bold)
