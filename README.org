@@ -1,7 +1,8 @@
 * My Solarized theme for Emacs
 
-[[http://ethanschoonover.com/solarized][Solarized]] is by far the best color theme I know of. Very well done,
-Ethan!
+[[http://ethanschoonover.com/solarized][Solarized]] is by far the best color theme I know of. Light and dark
+modes with uniform and pleasant contrast, and well balanced accent
+colors. Very well done, Ethan!
 
 My Solarized theme for Emacs if basically a mix of [[https://github.com/sellout/emacs-color-theme-solarized][sellout]]'s and
 [[https://github.com/bbatsov/solarized-emacs][bbatsov's]] Solarized themes, plus [[https://github.com/wasamasa/dotemacs][wasamasa's]] fork of bbatsov's.
