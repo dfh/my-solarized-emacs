@@ -1,1 +1,84 @@
-TODO
+* My Solarized theme for Emacs
+
+[[http://ethanschoonover.com/solarized][Solarized]] is by far the best color theme I know of. Very well done,
+Ethan!
+
+My Solarized theme for Emacs if basically a mix of [[https://github.com/sellout/emacs-color-theme-solarized][sellout]]'s and
+[[https://github.com/bbatsov/solarized-emacs][bbatsov's]] Solarized themes, plus [[https://github.com/wasamasa/dotemacs][wasamasa's]] fork of bbatsov's.
+
+** Features
+
+- No terminal support.
+- Only using the original Solarized colors.
+- Manual toggling between light and dark modes.
+- Readable syntax for defining colors (thank you [[https://github.com/wasamasa/dotemacs/blob/master/theme/my-solarized-theme.el][wasamasa]]!)
+- Only colors for the modes that I use.
+
+** Installation
+
+Put =my-solarized-theme.el= in =~/.emacs.d/theme/=. Then add something
+like this to =init.el=:
+
+#+BEGIN_SRC elisp
+(setq custom-theme-load-path '("~/.emacs.d/theme/" t))
+(load-theme 'my-solarized t) ; t for not asking for confirmation
+(enable-theme 'my-solarized)
+#+END_SRC
+
+Then restart Emacs or =M-x eval-buffer=.
+
+** To do
+
+- TODO Comment functions.
+- TODO Add completion mode colors.
+- TODO Add Org-mode colors from sellout (maybe).
+- TODO Add info colors from bbatsov.
+- TODO Add markdown-mode colors from bbatsov.
+- TODO Add web-mode colors from bbatsov.
+- TODO Add note about how to choose colors.
+
+** Background
+
+Why fork?
+
+- I never use Emacs in the terminal, so don't need support for that.
+- I want only the original Solarized accent colors, not the additional
+  ones in bbatsov's.
+- I want the color definitions to be readable.
+- I want to learn how to change/add colors.
+
+First I was using the official [[https://github.com/sellout/emacs-color-theme-solarized][Solarized Colorscheme for Emacs]] by Greg
+Pfeil (sellout). I liked how it used the colors. Then he changed the
+setting of light/dark mode to be based on the background mode of the
+frame. I found that confusing.
+
+So then I tried [[https://github.com/bbatsov/solarized-emacs][bbatsov's version]]. But I liked the way it used the
+colors much less. And it changed Org mode to a variable width font. I
+didn't like that at all. To be fair, though, there is an option to
+turn that off.
+
+Then I installed the IRC client [[https://github.com/jorgenschaefer/circe][Circe]], for which neither sellout nor
+bbatsov had colors defined. Asking for help installing Circe, I was
+led to wasamasa's [[https://github.com/wasamasa/dotemacs][literate Emacs configuration]] on GitHub. He used a
+heavily modified fork of bbatsov's theme. I looked at the code, and it
+seemed cleaner and easier to understand than both sellout's and the
+original bbatsov's version.
+
+So I decided to bite the bullet and make my own theme by mixing the
+three.
+
+Doing this makes a lot of sense, actually. Because getting the color
+setup right is important. As a programmer, I'm spending *a lot* of
+time looking at the screen. So I better then learn how to customize
+the colors myself if I want to get them the way I want. Plus I really
+should learn at least the basics of Emacs Lisp.
+
+References:
+
+    * http://ethanschoonover.com/solarized
+    * https://github.com/sellout/emacs-color-theme-solarized
+    * https://github.com/bbatsov/solarized-emacs
+    * https://github.com/wasamasa/dotemacs/blob/master/theme/my-solarized-theme.el
+
+
+

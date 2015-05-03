@@ -1,80 +1,6 @@
 ;;
 ;; My version of the Solarized color theme for Emacs.
 ;;
-;; Basically mix of sellout's and bbatsov's Solarized themes, and of
-;; wasamasa's fork of bbatsov's.
-;;
-;; Why fork?
-;;
-;;     - I never use Emacs in the terminal, so don't need support for that.
-;;     - I want only the original Solarized accent colors, not the additional ones in bbatsov's.
-;;     - I want to learn how to change/add colors.
-;; 
-;; First I was using the official Solarized theme for Emacs by Greg
-;; Pfeil. I liked how it uses the colors. Then he changed the setting
-;; of light/dark to be based on the background mode of the frame, which
-;; I found confusing.
-;;
-;; So then I tried bbatsov's version. But I liked the way it used the
-;; colors much less. And it changed Org mode to a non-fixed width
-;; font, which I didn't like at all.
-;;
-;; Then I installed the IRC client Circe, for which neither sellout
-;; nor bbatsov had colors defined. Asking for help installing Circe, I
-;; stumbled upon wasamasa's literate Emacs configuration on GitHub. He
-;; used a heavily modified fork of bbatsov's theme. I looked at the
-;; code, and it seemed cleaner and easier to understand than both
-;; sellout's and the original bbatsov's version.
-;;
-;; So I decided to bite the bullet and make my own theme by mixing sellout's
-;; bbatsov's and wasamasa's.
-;;
-;; Doing this makes a lot of sense, actually. Because getting the
-;; color setup right is important. As a programmer, I'm spending *a
-;; lot* of time looking at the screen. So I better learn how to
-;; customize the colors myself if I want to get them the way I want.
-;;
-;; See:
-;;
-;;     * http://ethanschoonover.com/solarized
-;;     * https://github.com/sellout/emacs-color-theme-solarized
-;;     * https://github.com/bbatsov/solarized-emacs
-;;     * https://github.com/wasamasa/dotemacs/blob/master/theme/my-solarized-theme.el
-;;
-
-;;
-;; Some more info on the Solarized theme and how to use the colors
-;; follow.
-;;
-;; Solarized defines 16 colors -- 8 monotones and 8 accent colors.
-;;
-;; There are two variants of the theme: light background and dark
-;; background. The accent colors are the same for both the light and
-;; dark variants. Only five of the eight monotones are used in each
-;; variant, respectively.
-;;
-;; For the dark version, this is the mapping of monotones to
-;; variables:
-;;
-;;   base1   fg-1  Emphasized content
-;;   base0   fg-0  Primary content
-;;   base01  bg-1  Secondary content
-;;   base02  bg-2  Background highlights
-;;   base03  bg-3  Background
-;;
-
-;;
-;; To do:
-;;
-;; TODO Make a README.org.
-;; TODO Comment functions.
-;; TODO Add completion mode colors.
-;; TODO Add Org-mode colors from sellout (maybe).
-;; TODO Add info colors from bbatsov.
-;; TODO Add markdown-mode colors from bbatsov.
-;; TODO Add web-mode colors from bbatsov.
-;; TODO Add note about how to choose accent colors to README.
-;;
 
 (deftheme my-solarized "Mix of sellout's, bbatsov's and
 wasamasa's fork of bbatsov's Solarized theme.")
@@ -152,6 +78,17 @@ unchanged."
 
 ;;
 ;; Here goes the actual face definitions
+;;
+;; For the dark version, this is the mapping of monotones to
+;; symbols:
+;;
+;;   base1   fg-1  Emphasized content
+;;   base0   fg-0  Primary content
+;;   base01  bg-1  Secondary content
+;;   base02  bg-2  Background highlights
+;;   base03  bg-3  Background
+;;
+;; Accent colors are mapped to corresponding symbols.
 ;;
 (my-apply-faces
  '(
@@ -290,7 +227,7 @@ unchanged."
    (ido-subdir :foreground blue)
 
    ;; linum
-    (linum :foreground bg-1 :background bg-2)
+   (linum :foreground bg-1 :background bg-2)
    
    ;; magit
    (magit-section-title :foreground yellow :weight bold)
@@ -300,13 +237,13 @@ unchanged."
    (magit-item-highlight :background bg-2 :weight unspecified)
    (magit-log-author :foreground cyan)
    (magit-log-graph :foreground bg-1)
-;   (magit-log-head-label-bisect-bad :background red-l :foreground red-d :box (:line-width -1))
-;   (magit-log-head-label-bisect-good :background green-l :foreground green-d :box (:line-width -1))
+					;   (magit-log-head-label-bisect-bad :background red-l :foreground red-d :box (:line-width -1))
+					;   (magit-log-head-label-bisect-good :background green-l :foreground green-d :box (:line-width -1))
    (magit-log-head-label-default :background bg-2 :box (:line-width -1))
-;   (magit-log-head-label-local :background blue-d :foreground blue-l :box (:line-width -1))
-;   (magit-log-head-label-patches :background red-d :foreground red-l :box (:line-width -1))
-;   (magit-log-head-label-remote :background green-d :foreground green-l :box (:line-width -1))
-;   (magit-log-head-label-tags :background yellow-d :foreground yellow-l :box (:line-width -1))
+					;   (magit-log-head-label-local :background blue-d :foreground blue-l :box (:line-width -1))
+					;   (magit-log-head-label-patches :background red-d :foreground red-l :box (:line-width -1))
+					;   (magit-log-head-label-remote :background green-d :foreground green-l :box (:line-width -1))
+					;   (magit-log-head-label-tags :background yellow-d :foreground yellow-l :box (:line-width -1))
    (magit-log-sha1 :foreground yellow)
 
    ;; markdown-mode
