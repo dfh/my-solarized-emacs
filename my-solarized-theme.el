@@ -36,9 +36,7 @@ for light/dark depending on the value of `my-solarized-dark'."
    ((eq color 'violet) "#6c71c4")
    ((eq color 'blue) "#268bd2")
    ((eq color 'cyan) "#2aa198")
-   ((eq color 'green) "#859900")
-   )
-  )
+   ((eq color 'green) "#859900")))
 
 (defun my-apply-faces (faces)
   "Helper function that sets the faces of the theme to a list of FACES.
@@ -356,14 +354,14 @@ combinations remain unchanged."
    (table-cell :foreground fg-0 :background bg-3)
 
    ;; term
-   (term-color-black :foreground bg-3 :background bg-2)
-   (term-color-red :foreground red :background red-d)
-   (term-color-green :foreground green :background green-d)
-   (term-color-yellow :foreground yellow :background yellow-d)
-   (term-color-blue :foreground blue :background blue-d)
-   (term-color-magenta :foreground magenta :background magenta-d)
-   (term-color-cyan :foreground cyan :background cyan-d)
-   (term-color-white :foreground bg-0 :background fg-0)
+   (term-color-black :foreground bg-2)
+   (term-color-red :foreground red)
+   (term-color-green :foreground green)
+   (term-color-yellow :foreground yellow)
+   (term-color-blue :foreground blue)
+   (term-color-magenta :foreground magenta)
+   (term-color-cyan :foreground cyan)
+   (term-color-white :foreground fg-0)
    (term-default-fg-color :inherit term-color-white)
    (term-default-bg-color :inherit term-color-black)
 
