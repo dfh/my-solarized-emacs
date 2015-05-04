@@ -425,7 +425,7 @@ combinations remain unchanged."
  'my-solarized
  ;; ansi-term
  `(ansi-color-names-vector [,(my-solarized-color 'bg-3)
-                            ,(my-solarized-color 'red )
+                            ,(my-solarized-color 'red)
                             ,(my-solarized-color 'green)
                             ,(my-solarized-color 'yellow)
                             ,(my-solarized-color 'blue)
@@ -441,7 +441,7 @@ combinations remain unchanged."
 
  ;; org-mode
  `(org-todo-keyword-faces
-   '(("PDNG" . (:background bg-3 :foreground orange :weight bold :slant italic))
-     ("TODO" . (:background bg-3 :foreground red :weight bold)))))
+   '(("PDNG" . (:background ,(my-solarized-color 'bg-3) :foreground ,(my-solarized-color 'orange) :weight bold :slant italic))
+     ("TODO" . (:background ,(my-solarized-color 'bg-3) :foreground ,(my-solarized-color 'red) :weight bold)))))
 
 (provide-theme 'my-solarized)
