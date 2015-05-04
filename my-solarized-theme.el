@@ -137,17 +137,19 @@ combinations remain unchanged."
    (makefile-space :background magenta)
 
    ;; circe
-   (lui-button-face :foreground blue :underline t)
+   (lui-button-face :foreground violet :underline t)
    (lui-highlight-face :foreground fg-2)
-   (lui-time-stamp-face :foreground violet-d :weight bold)
+   (lui-time-stamp-face :foreground bg-1)
 
-   (circe-originator-face :foreground fg-2)
-   (circe-prompt-face :foreground blue :background bg-3)
-   (circe-server-face :foreground blue)
-   (circe-highlight-nick-face :foreground fg-2 :weight bold)
-   (circe-topic-diff-new-face :background green-d)
-   (circe-topic-diff-removed-face :background red-d)
    (circe-fool-face :foreground bg-1)
+   (circe-highlight-nick-face :foreground fg-2)
+   (circe-highlight-all-nicks-face :foreground blue)
+   (circe-my-message-face :foreground fg-1 :weight bold)
+   (circe-originator-face :foreground fg-1)
+   (circe-prompt-face :foreground magenta :background bg-3)
+   (circe-server-face :inherit font-lock-comment-face)
+   (circe-topic-diff-new-face :background green)
+   (circe-topic-diff-removed-face :background red)
 
    ;; custom
    (custom-button
